@@ -19,9 +19,10 @@ const Login = () => {
 
 
     const handleSubmit = (data: any) => {
-        dispatch(loginUser(data)).then(() => {
-            window.location.reload()
-        })
+        dispatch(loginUser(data))
+        // .then(() => {
+        //     window.location.reload()
+        // })
     }
 
     const validation = [data.email, data.password].some((data) => data?.trim() === "")
