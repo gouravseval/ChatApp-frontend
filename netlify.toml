@@ -1,5 +1,4 @@
 [[redirects]]
-  from = "/api/*"
-  to = "https://chatapp-backend-6v42.onrender.com/api/:splat"
-  status = 200
-  force = true
+from = "/*"
+to = "index.html/"
+status = 200
