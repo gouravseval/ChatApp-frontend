@@ -13,7 +13,7 @@ const Socket = () => {
 
   useEffect(() => {
     if (user) {
-      socket = io("https://chatapp-backend-6v42.onrender.com/", {
+      socket = io("https://chatapp-backend-6v42.onrender.com", {
         query: {
           userId: user?.data.id
         }
@@ -44,7 +44,7 @@ export const getConversation = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     if (user) {
-      socket = io("https://chatapp-backend-6v42.onrender.com/", {
+      socket = io("https://chatapp-backend-6v42.onrender.com", {
         query: {
           userId: user?.data.id
         }
