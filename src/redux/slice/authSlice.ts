@@ -51,6 +51,8 @@ export const loginUser = createAsyncThunk(
             const response = await axios.post(`api/v1/auth/login`, {
                 email: data.email,
                 password: data.password,
+            },{
+                withCredentials: true
             });
             sessionStorage.setItem("userData" , JSON.stringify(response))
             toast.success("User logged in successfully");
