@@ -26,7 +26,7 @@ export const registerUser = createAsyncThunk(
             return null
         } 
         try {
-            const response = await axios.post(`${base_url}/api/v1/auth/register`, {
+            const response = await axios.post(`api/v1/auth/register`, {
                 username: data.username,
                 email: data.email,
                 password: data.password
@@ -49,7 +49,7 @@ export const loginUser = createAsyncThunk(
     'auth/loginUser',
     async (data: { email: string; password: string }, { rejectWithValue }) => {
         try {
-            const response = await axios.post(`${base_url}/api/v1/auth/login`, {
+            const response = await axios.post(`api/v1/auth/login`, {
                 email: data.email,
                 password: data.password,
             });
@@ -68,7 +68,7 @@ export const logoutUser = createAsyncThunk(
     'auth/logout',
     async ( _ , {rejectWithValue }) => {
         try {
-            const response = await axios.post(`${base_url}/api/v1/auth/logout`);
+            const response = await axios.post(`/api/v1/auth/logout`);
             sessionStorage.clear()
             toast.success("User logged out");
             window.location.reload()

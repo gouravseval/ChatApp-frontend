@@ -24,7 +24,9 @@ const base_url = import.meta.env.VITE_REACT_APP_API_BASE_URL
 // Fetch users from the /users API
 export const fetchUsers = createAsyncThunk('userDetails/fetchUsers', async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get(`${base_url}/api/v1/`);
+        const response = await axios.get(`api/v1/`,{
+            withCredentials: true
+        });
         return response.data.data;
     } catch (error: any) {
         return rejectWithValue(error.response?.data || 'Error fetching users');
@@ -35,7 +37,9 @@ export const fetchUsers = createAsyncThunk('userDetails/fetchUsers', async (_, {
 // Fetch messages from the /messages API
 export const fetchMessages = createAsyncThunk('userDetails/fetchMessages', async (receiverId: any, { rejectWithValue }) => {
     try {
-        const response = await axios.get(`${base_url}/api/v1/messages/${receiverId}`);
+        const response = await axios.get(`api/v1/messages/${receiverId}`,{
+            withCredentials: true
+        });
         return response.data.data?.messages;
     } catch (error: any) {
         return rejectWithValue(error.response?.data || 'Error fetching messages');
@@ -49,6 +53,8 @@ export const sendMessage = createAsyncThunk(
         try {
             const response = await axios.post(`${base_url}/api/v1/messages/send/${receiverId}`, {
                 message,
+            },{
+                withCredentials: true
             });
             return response.data;
         } catch (error: any) {
@@ -93,7 +99,9 @@ export const fetchProfilPic = createAsyncThunk(
     'userDetails/fetchProfilePic',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`${base_url}/api/v1/profilePic`);
+            const response = await axios.get(`${base_url}/api/v1/profilePic`,{
+                withCredentials: true
+            });
             sessionStorage.setItem("profilePic", JSON.stringify(response.data.data))
             return response.data.data;
         } catch (error: any) {
@@ -106,8 +114,9 @@ export const fetchProfilPic = createAsyncThunk(
 // Fetch conversations from the /conversation API
 export const fetchConversations = createAsyncThunk(`${base_url}/userDetails/fetchConversations`, async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get('api/v1/messages/conversation');
-        console.log(response.data)
+        const response = await axios.get('api/v1/messages/conversation',{
+            withCredentials: true
+        });
         return response.data;
     } catch (error: any) {
         return rejectWithValue(error.response?.data || 'Error fetching conversations');
