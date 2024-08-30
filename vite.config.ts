@@ -9,7 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://chatapp-backend-6v42.onrender.com',
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   },
