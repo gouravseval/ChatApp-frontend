@@ -7,7 +7,10 @@ import { useDispatch } from "react-redux"
 import { fetchProfilPic } from "./redux/slice/userDetailsSlice"
 
 const user: any = sessionStorage.getItem("userData")
-const authuser = JSON.parse(user)
+let authuser: any
+if (user) {
+  authuser = JSON.parse(user)
+}
 function App() {
 
   const dispatch: any = useDispatch()
