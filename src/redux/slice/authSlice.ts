@@ -8,7 +8,6 @@ interface AuthState {
     error: string | null;
 }
 
-const base_url = import.meta.env.VITE_REACT_APP_API_BASE_URL
 
 const initialState: AuthState = {
     user: null,
