@@ -89,23 +89,26 @@ const Home = () => {
       />}
       <div className="w-[20%] flex flex-col gap-4 min-w-[300px] h-full px-4">
         <h1 className="text-center mt-6 text-[36px] font-semibold text-[#b1b1b1]">CHAT<span className="text-[#088395]">APP</span></h1>
-        <div className="flex flex-col flex-nowrap py-3 gap-1 h-[80vh] overflow-y-auto">
+        <div className="flex flex-col items-center flex-nowrap py-3 gap-1 h-[80vh] overflow-y-auto">
+        {messageStatus !== "loading" ?  <>
           {users?.map((data) => (
             <User
-              onlineStatus={onlineUsers?.includes(data._id)}
-              onClick={() => {
-                setReceiverId(data._id)
-                dispatch(fetchMessages(data._id))
-                setReceiver(data)
-                setImg(data?.profilePic?.profilePic ? data?.profilePic?.profilePic : User2)
-              }}
-              className={`${data._id === receiverId ? "bg-[#088395] " : "bg-[#37B7C3] "}`}
-              key={data._id}
-              name={data.username}
-              username={data.username}
-              userPic={data?.profilePic?.profilePic}
+            onlineStatus={onlineUsers?.includes(data._id)}
+            onClick={() => {
+              setReceiverId(data._id)
+              dispatch(fetchMessages(data._id))
+              setReceiver(data)
+              setImg(data?.profilePic?.profilePic ? data?.profilePic?.profilePic : User2)
+            }}
+            className={`${data._id === receiverId ? "bg-[#088395] " : "bg-[#37B7C3] "}`}
+            key={data._id}
+            name={data.username}
+            username={data.username}
+            userPic={data?.profilePic?.profilePic}
             />
           ))}
+          </>
+          : <span className="mt-60 loading loading-spinner loading-lg"></span>}
         </div>
 
 
@@ -121,7 +124,7 @@ const Home = () => {
             setZoomIn(true)
           }} className="relative flex items-center justify-center gap-2">
             {
-              !profilePic ? <User2Icon className="cursor-pointer h-12 w-12 rounded-[50%] p-2  bg-[#37B7C3]" />
+              !profilePic ? <User2Icon className="cursor-pointer h-12 w-12 rounded-[50%] p-2  text-white " />
                 :
                 <img className=" h-12 cursor-pointer border-2 border-[#088395] w-12 object-cover object-center rounded-[50%]" src={profilePic?.profilePic} alt="" />
             }
