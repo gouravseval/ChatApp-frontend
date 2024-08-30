@@ -51,7 +51,7 @@ export const sendMessage = createAsyncThunk(
     'userDetails/sendMessage',
     async ({ receiverId, message }: { receiverId: string; message: string }, { rejectWithValue }) => {
         try {
-            const response = await axios.post(`${base_url}/api/v1/messages/send/${receiverId}`, {
+            const response = await axios.post(`api/v1/messages/send/${receiverId}`, {
                 message,
             },{
                 withCredentials: true
@@ -72,7 +72,7 @@ export const postProfilePic = createAsyncThunk(
             const formData = new FormData();
             formData.append('profilePic', file);
             try {
-                const response = await axios.post(`${base_url}//api/v1/profilePic`, formData, {
+                const response = await axios.post(`api/v1/profilePic`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
