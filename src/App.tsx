@@ -15,7 +15,9 @@ function App() {
 
   const dispatch: any = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfilPic())
+    if(authuser){
+      dispatch(fetchProfilPic())
+    }
   }, [])
 
 

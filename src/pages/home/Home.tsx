@@ -42,9 +42,7 @@ const Home = () => {
 
   const handlePostProfilePic = (e: any) => {
     if (e.target.files?.[0].size < 10485760) {
-      dispatch(postProfilePic(e)).then(() => {
-        window.location.reload();
-      });
+      dispatch(postProfilePic(e))
     }else{
       toast.error("Max file size is 10MB")
     }

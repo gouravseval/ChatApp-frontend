@@ -55,6 +55,7 @@ export const loginUser = createAsyncThunk(
                 withCredentials: true
             });
             sessionStorage.setItem("userData" , JSON.stringify(response))
+            window.location.reload()
             toast.success("User logged in successfully");
             return response.data;
         } catch (error: any) {
