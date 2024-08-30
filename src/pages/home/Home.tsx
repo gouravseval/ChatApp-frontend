@@ -75,7 +75,11 @@ const Home = () => {
         isEdit={true}
         status={messageStatus}
         img={img}
-        onClose={() => setZoomIn(false)}
+        onClose={() => {
+        if(messageStatus !== "loading"){
+          setZoomIn(false)
+        }
+        }}
         onEdit={handlePostProfilePic}
       />}
       {zoomInRec && <ZoomImage

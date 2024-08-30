@@ -16,7 +16,7 @@ const ZoomImage = ({ img, isEdit, onEdit, onClose, status }: any) => {
                 <span className="loading loading-dots loading-lg"></span>
             </div>}
             <div>
-                <img src={img} className="object-cover object-center h-[500px] w-[500px] overflow-hidden rounded-[50%]" alt="Zoomed Image" />
+                <img src={img} className="object-cover object-center h-[500px] w-[500px] overflow-hidden" alt="Zoomed Image" />
             </div>
             {isEdit && (
                 <div onClick={handleInputClick}>
