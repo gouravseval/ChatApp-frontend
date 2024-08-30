@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000/', // Replace with your backend API URL
+        target: 'https://chatapp-backend-6v42.onrender.com/', // Replace with your backend API URL
         changeOrigin: true,
         secure: true,
       },

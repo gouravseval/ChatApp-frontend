@@ -19,7 +19,6 @@ const initialState: UserState = {
     messages: [],
     onlineUser: [],
 };
-const base_url = import.meta.env.VITE_REACT_APP_API_BASE_URL
 
 // Fetch users from the /users API
 export const fetchUsers = createAsyncThunk('userDetails/fetchUsers', async (_, { rejectWithValue }) => {
@@ -99,7 +98,7 @@ export const fetchProfilPic = createAsyncThunk(
     'userDetails/fetchProfilePic',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`${base_url}/api/v1/profilePic`,{
+            const response = await axios.get(`api/v1/profilePic`,{
                 withCredentials: true
             });
             sessionStorage.setItem("profilePic", JSON.stringify(response.data.data))
@@ -112,7 +111,7 @@ export const fetchProfilPic = createAsyncThunk(
 
 
 // Fetch conversations from the /conversation API
-export const fetchConversations = createAsyncThunk(`${base_url}/userDetails/fetchConversations`, async (_, { rejectWithValue }) => {
+export const fetchConversations = createAsyncThunk(`userDetails/fetchConversations`, async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get('api/v1/messages/conversation',{
             withCredentials: true
